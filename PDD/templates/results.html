@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+
+{% block title %}Analysis Results - AI Plant Care Assistant{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                    <h2 class="card-title text-center mb-4">Plant Analysis Results</h2>
+                    
+                    <div class="text-center mb-4">
+                        <img src="{{ url_for('uploaded_file', filename=filename) }}" 
+                             alt="Analyzed plant" 
+                             class="img-fluid rounded"
+                             style="max-height: 300px; object-fit: contain;">
+                    </div>
+
+                    <div class="analysis-results">
+                        <h3 class="mb-3">Diagnosis</h3>
+                        <div class="alert {% if diagnosis.status == 'Healthy' %}alert-success{% else %}alert-warning{% endif %}">
+                            <i class="fas {% if diagnosis.status == 'Healthy' %}fa-check-circle{% else %}fa-exclamation-circle{% endif %} me-2"></i>
+                            <strong>Status:</strong> {{ diagnosis.status }}
+                            {% if diagnosis.confidence %}
+                            <br>
+                            <small class="text-muted">Confidence: {{ "%.1f"|format(diagnosis.confidence * 100) }}%</small>
+                            {% endif %}
+                        </div>
+
+                        {% if diagnosis.symptoms %}
+                        <h4 class="mb-3">Symptoms Detected:</h4>
+                        <ul class="list-group mb-4">
+                            {% for symptom in diagnosis.symptoms %}
+                            <li class="list-group-item">
+                                <i class="fas fa-search text-warning me-2"></i>
+                                {{ symptom }}
+                            </li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+
+                        {% if recommendations %}
+                        <h4 class="mb-3">Care Recommendations:</h4>
+                        <div class="recommendations">
+                            <ul class="list-group">
+                                {% for recommendation in recommendations %}
+                                <li class="list-group-item">
+                                    <i class="fas fa-leaf text-success me-2"></i>
+                                    {{ recommendation }}
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="text-center mt-4">
+                        <a href="{{ url_for('upload') }}" class="btn btn-primary me-2">
+                            <i class="fas fa-camera me-1"></i>
+                            Analyze Another Plant
+                        </a>
+                        <a href="{{ url_for('forum') }}" class="btn btn-outline-primary">
+                            <i class="fas fa-comments me-1"></i>
+                            Discuss in Forum
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Next Steps</h4>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <i class="fas fa-calendar-check text-success me-2"></i>
+                            Schedule regular check-ups
+                        </li>
+                        <li class="list-group-item">
+                            <i class="fas fa-camera text-success me-2"></i>
+                            Take progress photos
+                        </li>
+                        <li class="list-group-item">
+                            <i class="fas fa-users text-success me-2"></i>
+                            Share your experience in the forum
+                        </li>
+                        <li class="list-group-item">
+                            <i class="fas fa-bell text-success me-2"></i>
+                            Set care reminders
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<style>
+    .analysis-results {
+        background-color: #f8f9fa;
+        padding: 20px;
+        border-radius: 8px;
+    }
+    .recommendations {
+        margin-top: 1rem;
+    }
+    .list-group-item i {
+        width: 20px;
+        text-align: center;
+    }
+    .alert {
+        margin-bottom: 2rem;
+    }
+</style>
+{% endblock %}
