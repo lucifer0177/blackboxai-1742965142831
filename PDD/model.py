@@ -145,6 +145,68 @@ class PlantDiseaseModel:
                     'Clean and disinfect tools'
                 ]
             },
+            'fusarium_wilt': {
+                'name': 'Fusarium Wilt',
+                'confidence': 0.85,
+                'patterns': {},
+                'symptoms': [
+                    'Yellowing of leaves',
+                    'Wilting',
+                    'Stunted growth',
+                    'Browning of vascular tissue'
+                ],
+                'recommendations': [
+                    'Remove infected plants',
+                    'Improve soil drainage',
+                    'Rotate crops'
+                ]
+            },
+            'bacterial_blight': {
+                'name': 'Bacterial Blight',
+                'confidence': 0.80,
+                'patterns': {},
+                'symptoms': [
+                    'Water-soaked spots on leaves',
+                    'Yellowing',
+                    'Leaf drop',
+                    'Dark streaks on stems'
+                ],
+                'recommendations': [
+                    'Remove infected leaves',
+                    'Avoid overhead watering',
+                    'Use resistant varieties'
+                ]
+            },
+            'anthracnose': {
+                'name': 'Anthracnose',
+                'confidence': 0.82,
+                'patterns': {},
+                'symptoms': [
+                    'Dark, sunken lesions on leaves',
+                    'Leaf drop',
+                    'Stem cankers'
+                ],
+                'recommendations': [
+                    'Remove infected plant parts',
+                    'Improve air circulation',
+                    'Apply fungicide'
+                ]
+            },
+            'downy_mildew': {
+                'name': 'Downy Mildew',
+                'confidence': 0.78,
+                'patterns': {},
+                'symptoms': [
+                    'Yellow patches on upper leaf surfaces',
+                    'White mold on the underside',
+                    'Stunted growth'
+                ],
+                'recommendations': [
+                    'Improve air circulation',
+                    'Avoid overhead watering',
+                    'Apply fungicide'
+                ]
+            },
             'healthy': {
                 'name': 'Healthy',
                 'confidence': 0.95,
