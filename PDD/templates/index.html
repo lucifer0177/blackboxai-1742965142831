@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block title %}Home - AI Plant Care Assistant{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center text-center mb-5">
+        <div class="col-md-8">
+            <h1 class="display-4 mb-4">🌿 Welcome to AI Plant Care Assistant</h1>
+            <p class="lead">
+                Your intelligent companion for plant health monitoring and disease diagnosis.
+                Upload a photo of your plant and get instant analysis and care recommendations.
+            </p>
+        </div>
+    </div>
+
+    <div class="row g-4 mb-5">
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body text-center">
+                    <h3 class="card-title">🔍 Plant Analysis</h3>
+                    <p class="card-text">
+                        Upload images of your plants for instant disease detection and health assessment using advanced AI technology.
+                    </p>
+                    <a href="{{ url_for('upload') }}" class="btn btn-success">Analyze Your Plant</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body text-center">
+                    <h3 class="card-title">💡 Expert Advice</h3>
+                    <p class="card-text">
+                        Receive personalized care recommendations based on AI analysis of your plant's condition.
+                    </p>
+                    <a href="{{ url_for('upload') }}" class="btn btn-outline-success">Get Recommendations</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body text-center">
+                    <h3 class="card-title">👥 Community</h3>
+                    <p class="card-text">
+                        Join our community forum to share experiences and get advice from fellow plant enthusiasts.
+                    </p>
+                    <a href="{{ url_for('forum') }}" class="btn btn-outline-success">Join Discussion</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mb-5">
+        <div class="col-md-8">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h3 class="text-center mb-4">How It Works</h3>
+                    <div class="row g-4">
+                        <div class="col-md-4 text-center">
+                            <div class="mb-3">📸</div>
+                            <h5>1. Upload Photo</h5>
+                            <p class="small">Take a clear photo of your plant's leaves or affected areas</p>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <div class="mb-3">🤖</div>
+                            <h5>2. AI Analysis</h5>
+                            <p class="small">Our AI analyzes the image for signs of diseases or health issues</p>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <div class="mb-3">📋</div>
+                            <h5>3. Get Results</h5>
+                            <p class="small">Receive detailed diagnosis and care recommendations</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+            <h3 class="mb-4">Ready to check your plant's health?</h3>
+            <a href="{{ url_for('upload') }}" class="btn btn-lg btn-success">
+                Get Started Now
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
