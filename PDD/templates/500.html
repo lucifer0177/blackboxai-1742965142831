@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}500 Server Error - AI Plant Care Assistant{% endblock %}
+
+{% block content %}
+<div class="container text-center py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h1 class="display-1">500</h1>
+            <h2 class="mb-4">Internal Server Error</h2>
+            <p class="lead mb-4">
+                Oops! Something went wrong on our end. We're working to fix it.
+            </p>
+            <div class="mb-4">
+                <img src="{{ url_for('static', filename='images/plant-500.svg') }}" 
+                     alt="500 illustration" 
+                     class="img-fluid"
+                     style="max-width: 300px;"
+                     onerror="this.style.display='none'">
+            </div>
+            <p class="mb-4">
+                Please try again later or contact support if the problem persists.
+            </p>
+            <div>
+                <a href="{{ url_for('index') }}" class="btn btn-success me-2">
+                    Return Home
+                </a>
+                <button onclick="window.location.reload()" class="btn btn-outline-success">
+                    Try Again
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
