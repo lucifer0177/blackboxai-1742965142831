@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block title %}Upload Plant - AI Plant Care Assistant{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h2 class="card-title text-center mb-4">Upload Plant Image</h2>
+                    
+                    <form action="{{ url_for('api_upload') }}" method="post" enctype="multipart/form-data" id="uploadForm">
+                        <div class="mb-4">
+                            <div class="upload-area text-center p-5 border rounded" id="dropZone">
+                                <div id="preview" class="mb-3 d-none">
+                                    <img id="imagePreview" src="" alt="Preview" class="img-fluid mb-3 rounded">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span class="text-muted" id="fileInfo"></span>
+                                        <button type="button" class="btn btn-outline-danger btn-sm" id="removeImage">
+                                            <i class="fas fa-times"></i> Remove
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div id="uploadPrompt">
+                                    <i class="fas fa-cloud-upload-alt fa-3x mb-3"></i>
+                                    <h5>Drag and drop your plant image here</h5>
+                                    <p class="text-muted">or</p>
+                                    <label class="btn btn-success" for="file">
+                                        Choose File
+                                    </label>
+                                    <input type="file" name="file" id="file" class="d-none" accept=".jpg,.jpeg,.png">
+                                    <div class="mt-3 text-muted small">
+                                        Supported formats: JPG, JPEG, PNG<br>
+                                        Maximum file size: 16MB
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="uploadError" class="alert alert-danger mt-3 d-none">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <span id="errorMessage"></span>
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary btn-lg" id="analyzeBtn" disabled>
+                                Analyze Plant
+                            </button>
+                        </div>
+
+                        <div id="uploadSpinner" class="text-center mt-3 d-none">
+                            <div class="spinner-border text-success" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                            <div class="mt-2">Analyzing image...</div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h4 class="card-title">Tips for Best Results:</h4>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <i class="fas fa-check-circle text-success"></i>
+                            Take clear, well-lit photos
+                        </li>
+                        <li class="list-group-item">
+                            <i class="fas fa-check-circle text-success"></i>
+                            Focus on affected areas or symptoms
+                        </li>
+                        <li class="list-group-item">
+                            <i class="fas fa-check-circle text-success"></i>
+                            Include multiple leaves if possible
+                        </li>
+                        <li class="list-group-item">
+                            <i class="fas fa-check-circle text-success"></i>
+                            Avoid blurry or dark images
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<style>
+    .upload-area {
+        border: 2px dashed #ccc !important;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+    .upload-area:hover {
+        border-color: #28a745 !important;
+    }
+    .upload-area.dragover {
+        background-color: #f8f9fa;
+        border-color: #28a745 !important;
+    }
+    #imagePreview {
+        max-height: 300px;
+        object-fit: contain;
+    }
+</style>
+{% endblock %}
