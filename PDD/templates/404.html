@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}404 Not Found - AI Plant Care Assistant{% endblock %}
+
+{% block content %}
+<div class="container text-center py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h1 class="display-1">404</h1>
+            <h2 class="mb-4">Page Not Found</h2>
+            <p class="lead mb-4">
+                Oops! The page you're looking for doesn't exist or has been moved.
+            </p>
+            <div class="mb-4">
+                <img src="{{ url_for('static', filename='images/plant-404.svg') }}" 
+                     alt="404 illustration" 
+                     class="img-fluid"
+                     style="max-width: 300px;"
+                     onerror="this.style.display='none'">
+            </div>
+            <p class="mb-4">
+                Let's get you back on track!
+            </p>
+            <div>
+                <a href="{{ url_for('index') }}" class="btn btn-success me-2">
+                    Return Home
+                </a>
+                <a href="{{ url_for('upload') }}" class="btn btn-outline-success">
+                    Analyze Plant
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
